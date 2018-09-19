@@ -1,6 +1,6 @@
 # react-select-simple-value
 
-A simple value wrapper for react-select.
+A simple value wrapper for [react-select](https://github.com/JedWatson/react-select).
 
 ### Install
 

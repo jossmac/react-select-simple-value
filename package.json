@@ -5,6 +5,15 @@
   "main": "dist/index.js",
   "license": "MIT",
   "private": false,
+  "homepage": "https://github.com/jossmac/react-select-simple-value",
+  "bugs": {
+    "url": "https://github.com/jossmac/react-select-simple-value/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jossmac/react-select-simple-value.git"
+  },
+  "author": "Joss Mackison (https://github.com/jossmac)",
   "scripts": {
     "build": "parcel build index.js --out-dir dist"
   },
