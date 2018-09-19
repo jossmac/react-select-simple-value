@@ -1,18 +1,37 @@
-function getValue(opts, val) {
+function flatten(arr) {
+  return arr.reduce(
+    (acc, val) =>
+      Array.isArray(val.options)
+        ? acc.concat(flatten(val.options))
+        : acc.concat(val),
+    []
+  );
+}
+
+function defaultGetOptionValue(opt) {
+  return opt.value;
+}
+
+function getValue(opts, val, getOptVal) {
   if (val === undefined) return undefined;
-  return opts.find(o => o.value === val);
+
+  const options = flatten(opts);
+  const value = options.find(o => getOptVal(o) === val);
+
+  return value;
 }
 
 function ReactSelectSimpleValue({
   children,
   defaultValue: simpleDefault,
+  getOptionValue = defaultGetOptionValue,
   options,
   value: simpleValue,
 }) {
-  const value = getValue(options, simpleValue);
-  const defaultValue = getValue(options, simpleDefault);
+  const value = getValue(options, simpleValue, getOptionValue);
+  const defaultValue = getValue(options, simpleDefault, getOptionValue);
 
-  return children({ defaultValue, options, value });
+  return children({ defaultValue, getOptionValue, options, value });
 }
 
 export default ReactSelectSimpleValue;
