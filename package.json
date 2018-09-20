@@ -14,6 +14,9 @@
     "url": "https://github.com/jossmac/react-select-simple-value.git"
   },
   "author": "Joss Mackison (https://github.com/jossmac)",
+  "keywords": [
+    "react-select, simple-value"
+  ],
   "scripts": {
     "build": "parcel build index.js --out-dir dist"
   },

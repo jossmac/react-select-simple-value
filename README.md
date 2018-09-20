@@ -11,23 +11,39 @@ yarn add react-select-simple-value
 ### Use
 
 ```jsx
-import React, { Component } from 'react';
-import Select from 'react-select';
+import ReactSelect from 'react-select';
 import SimpleValue from 'react-select-simple-value';
 
-const options = [
-  { value: 'blue', label: 'Blue', color: '#0052CC' },
-  { value: 'red', label: 'Red', color: '#FF5630' },
-  { value: 'yellow', label: 'Yellow', color: '#FFC400' },
-];
+export const MySelect = ({ options, value, ...props }) => (
+  <SimpleValue options={options} value={value}>
+    {simpleProps => <ReactSelect ref={ref} {...props} {...simpleProps} />}
+  </SimpleValue>
+);
 
-export default class App extends Component {
+/* elsewhere in your application */
+
+class extends React.Component {
   render() {
     return (
-      <SimpleValue options={options} value="blue">
-        {props => <Select {...props} />}
-      </SimpleValue>
+      <MySelect
+        options={[
+          { value: 'blue', label: 'Blue' },
+          { value: 'red', label: 'Red' },
+          { value: 'yellow', label: 'Yellow' },
+        ]}
+        value="blue"
+      />
     );
   }
 }
 ```
+
+### Props
+
+The following props are accepted, consumed, and passed on to the `children` function. Only `defaultValue` and `value` are augmented.
+
+- defaultValue
+- getOptionValue
+- isMulti
+- options
+- value
